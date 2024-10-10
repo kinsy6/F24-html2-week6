@@ -77,3 +77,36 @@ footer{
 /********************************
 	Special (added in class)
 ********************************/
+
+main {
+	width: calc(960px - 90x);
+	margin: 20px auto;
+	background-image: url(../images/corkback.jpg);
+	background-repeat: repeat;
+	padding: 25px 45px 45px;
+	border: 25px solid #542401;
+	border-top-width: 55px;
+	border-radius: 25px;
+	box-shadow: 5px 5px 10px black, inset 3px 3px 7px black;
+}
+
+/* **************** drop down ****************** */
+
+nav {
+	font-size: 2em;
+	margin: -45px 0 25px;
+}
+
+nav > ul {
+	display: flex;
+	justify-content: flex-end;
+}
+
+nav > ul > li {
+	padding: 0 10px;
+	position: relative;
+}
+
+nav ul li ul {
+	display: none;
+}

@@ -42,13 +42,21 @@
     font-style: normal;
 }
 
+/* ******************************
+            Custom Properties 
+**********************************/
+
+:root {
+	--mud-brown: #542401;
+	--jungle-green: #186b08;
+}
 
 /********************************
 			Main
 *********************************/
 
 body{
-	background-color: #186b08;
+	background-color: var(--jungle-green);
 	font-family:Tahoma, Geneva, sans-serif;
 }
 
@@ -79,22 +87,25 @@ footer{
 ********************************/
 
 main {
-	width: calc(960px - 90x);
+	width: calc(960px - 90px);
 	margin: 20px auto;
 	background-image: url(../images/corkback.jpg);
 	background-repeat: repeat;
 	padding: 25px 45px 45px;
-	border: 25px solid #542401;
+	/* var stansds for variable and we set the name in the :root property */
+	border: 25px solid var(--mud-brown);
 	border-top-width: 55px;
 	border-radius: 25px;
 	box-shadow: 5px 5px 10px black, inset 3px 3px 7px black;
+	display: grid;
+	grid-template-columns: 1fr;
 }
 
 /* **************** drop down ****************** */
 
 nav {
 	font-size: 2em;
-	margin: -45px 0 25px;
+	margin: -65px 0 25px;
 }
 
 nav > ul {
@@ -110,3 +121,134 @@ nav > ul > li {
 nav ul li ul {
 	display: none;
 }
+
+nav a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+nav > ul > li:hover ul {
+	display: block;
+	position: absolute;
+	background-color: var(--mud-brown);
+	padding-top: 10px;
+	box-shadow: 3px 3px 7px black;
+}
+
+nav ul li ul a {
+	line-height: 1.5;
+}
+
+/* **********************************
+            Pictures
+************************************ */
+
+p {
+	line-height: 1.4;
+}
+
+article {
+	background-color: white;
+	border: 1px solid #aaa;
+	box-shadow: 2px 2px 4px rgb(50, 50, 50);
+
+}
+
+header article {
+	margin: 20px 0;
+	padding: 10px;
+}
+
+section article {
+	width: 350px;
+	padding: 23px;
+	position: relative;
+}
+
+/* ******************************
+            Sections
+********************************* */
+
+/* use nth:child to make every other pictures on the right side
+nc 3 would be only on the third one
+nc 2n would be every second child 
+nc 2n + 1 every second child starting with the third
+nc 2n - 1 every second child starting with the first */
+main section:nth-child(2n) {
+	justify-self: end;
+	margin-top: -100px;
+	margin-bottom: -100px;
+}
+
+section a {
+	color: var(--jungle-green);
+}
+
+section a:hover {
+	color: #2ce008;
+}
+
+/* use a pseudo class :: befor to aply a tappe effect to each picture */
+section article::before {
+	content: '';
+	width: 180px;
+	height: 50px;
+	background-color: rgba(222, 222, 222, 0.6);
+	position: absolute;
+	left: 105px;
+	top: -15px;
+	z-index: 2;
+	transform: rotate(-5deg);
+}
+
+section:nth-child(2n) article::before {
+	transform: rotate(5deg);
+}
+
+header h1 {
+	display: flex;
+	justify-content: center;
+}
+
+header h1 span {
+	display: block;
+	margin: 0 15px;
+}
+
+header h1 span::first-letter{
+	font-family: 'Moo Lah Lah', cursive;
+	font-size: 1.3em;
+}
+
+/* **********************************************
+               Atribute Selectors
+   ********************************************** */
+
+/* = means matches exactly
+^= means begin with
+$= means ends with
+*= means contains */
+   a[href*="wiki"] {
+	background-image: url(../images/wikipedia-icon.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: top left;
+	padding-left: 1.5em;
+   }
+
+   footer a {
+	color: white;
+   }
+
+   footer a[href$=".com"] {
+	color: #ff6a00;
+   }
+
+   /* *************************************
+        Selection pseudo code
+      ************************************* */
+
+	  p::selection {
+		background-color: #ff6a00;
+	  }
